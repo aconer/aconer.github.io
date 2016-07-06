@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AConer Webpage</title>
+        
+        <style>
+            body {
+                background: rgb(254, 168, 119);
+                color: rgb(45, 45, 45);
+                padding: 10px;
+                font-family: arial;
+            }
+            header {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            [id=all-contents] {
+                max-width: 800px;
+                margin: auto;
+            }
+
+            /* navigation menu */
+            nav {
+                border-radius: 20px;
+                background: rgb(207, 151, 215);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+            }
+            nav header {
+                display: flex;
+                align-items: center;
+                color: rgb(212, 212, 212);
+                flex: 1;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            /* main container area beneath menu (image header) */
+            main {
+                border-radius:20px;
+                background: rgb(212, 212, 212);
+                display: flex;
+            }
+            [class=sidebar] {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            [class=sidebar] img {
+                width: 200px;
+            }
+            [class=content] {
+                flex: 1;
+                padding: 15px;
+            }
+            [class=interests] header {
+                font-size: 1.25em;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="all contents">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="studies.html">Studies</a></li>
+                </ul>
+            </nav>
+            
+            <main>
+                <div class="sidebar">
+                    <img style="border-radius: 20px" src="https://scontent-atl3-1.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10957741_10152625396441828_1310098502798006924_n.jpg?oh=faf6eee5e303ac32cb4ba82523410f5a&oe=576C962B"/>
+                </div>
+                
+                <div class="content">
+                    <header>AConer</header>
+                    
+                    <p>Program Assistant</p>
+                    <section class="interests">
+                        <header><b>Interests</b></header>
+                        <ul>
+                            <li>Japanese Food!</li>
+                            <li>Decorating!</li>
+                            <li>Developing Websites!</li>
+                        </ul>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

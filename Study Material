@@ -1,0 +1,116 @@
+let arrayNum=[1,2,3];
+for(i = 0; i > 0; i++){
+    arrayNum;
+}
+
+for(i = 0; i > 0; i - 1){
+    arrayNum;
+}
+
+function anything(parameter, argument){
+    arrayNum;
+}
+
+anything();
+
+parameter acts as a placeholder that grabs the information stored elsewhere
+an argument is hard coded where you give the function specific values
+
+
+look at extend
+
+function map(collection, transform){
+    const mapped = [];
+    each(collection, function(value, position, co){
+        mapped.push(transform(value, position, co));
+        
+    });
+    return mapped;
+}
+
+function is being executed elsewhere but the outside scope has access to mapped because of *closure
+the function definition forms a closure over reference
+
+
+*making an API
+*returning an object
+
+function makeContactlist(){
+    const contacts = []; //example of closure
+    return{
+        add(contact)
+        contacts.push(contact);
+    },
+    length: function(){
+        return contacts.length;
+        }
+        
+    }
+}
+
+let myContacts = makeContactList();
+let myContacts2 = makeContactList(); //references its own contact list
+
+
+transform: to be able to access a particular value and its position with the object/array
+
+**functional programming
+higher order function
+
+pass, return, assign
+
+each - what you do on each iteration is its flexible nature
+
+use reduce to make a summary occurances
+
+cloud9 workspace
+node.js
+require it
+let data = require my json file .json
+
+*summary as an object
+how do you get the keys and values?
+
+create a c9 workspace
+with custom
+copy paste prodcut.json file
+create an app.js file
+in app.js load products by using `let products = require('./product.json');
+implement reduce
+make a summary of product type by count
+
+
+{
+    phones: 7,
+    cases: 4
+}
+
+recursion *keyword search
+base-case: can no longer process; return
+recursive-case: I can continue processing and I'm going to call myself
+
+function search(collection, target){
+    let output = [];
+    each(collection, function(value){
+    
+    //base//
+    
+     if(typeof value === 'string') {
+         if (value.toLowerCase().indexOf(target.toLowerCase()) > -1){
+             output.push(value);
+         }
+         
+         
+         
+    //recursive//
+    
+     } else if (isCollection(value)){
+         if(search(value, target).length){
+             output.push(value);
+         }
+     }
+    });
+    return output;
+}
+
+//exit early
