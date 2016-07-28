@@ -1,17 +1,4 @@
-
-
-/*function objectValues(obj){
-    return Object.keys(obj).map(function(key){
-        return obj[key];
-    });
-}
-*/
-
-function each(){}
-
-//collects transformations into an array
-
-//objectValues:
+// objectValues:
 function objectValues(obj){
    let output = []; 
    for(var key in obj){
@@ -21,7 +8,6 @@ function objectValues(obj){
 }
 
 //keysToString() : Should take an object and return all its keys in a string each separated with a space
-
 function keysToString(obj){
     return Object.keys(obj).join(' ');
 }
@@ -150,7 +136,7 @@ function removeProperties(object, array){
 
 function dedup(array){
     var output = [];
-    for(var i = 0; array.length; i++){
+    for(var i = 0; i < array.length; i++){
         if(array.indexOf(array[i] === i)){
             output.push(array[i]);
         }

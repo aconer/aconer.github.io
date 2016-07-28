@@ -43,4 +43,37 @@ var customers = [
     }
 ];
 
-console.log(customers[1].friends.length);
+//console.log(customers[1].friends.length);
+
+/**
+ * function search(collection){
+ * // create something to hold objects in which target is found
+ * //iterate collection//
+ * //base case// isString?
+ * //       if String > is target within String
+ * //       push whole object into some output
+ * //       isCollection()?
+ * //       if search(value).length ---> subsearch
+ *               push whole object into some output
+ * //
+ * //return output
+ }
+ * function isCollection() {
+* //weeds out false positives for object, returns true if 
+* //value is Array or Object intended as collection
+ }
+ * 
+ */
+ 
+ var names = ['John', 'Gordon', 'Tyrin'];
+ var uppercase = names.map(function(name, i, names){
+     return name.toUpperCase();
+ });
+ 
+ var listItems = names.map(function(name, i, names){
+     return $('<li>').text(name);
+ });
+ //list of jQuery wrapped li's
+ console.log(listItems[0][0].innerHTML);
+ 
+ 

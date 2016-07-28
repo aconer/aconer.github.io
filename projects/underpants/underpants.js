@@ -48,7 +48,8 @@ _.identity = function(value){ //pass thru dummy function
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeOf = function(value){
+_.typeOf = (value) => 
+{
     if(Array.isArray(value)) return 'array';
     if(value === null) return 'null';
     if(value instanceof Date) return 'date';
@@ -173,9 +174,9 @@ _.indexOf = function(array, value){
 * Extra Credit:
 *   use _.each in your implementation
 */
-_.filter = function(array, test){
+_.filter = function(collection, test){
    var passed = [];
-   _.each(array, function(value, position, collection){
+   _.each(collection, function(value, position, collection){
        if(test(value, position, collection)){
            passed.push(value);
        }   
@@ -195,8 +196,8 @@ _.filter = function(array, test){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-_.reject = function(array, test){
-    return _.filter(array, function(value, position, collection){
+_.reject = function(collection, test){
+    return _.filter(collection, function(value, position, collection){
         return !test(value, position, collection);
     });
 };
@@ -219,8 +220,8 @@ _.reject = function(array, test){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-_.partition = function(array, test){
-    return [_.filter(array, test),_.reject(array,test)];
+_.partition = function(collection, test){
+    return [_.filter(collection, test),_.reject(collection,test)];
 };
 
 /** _.unique()
@@ -306,14 +307,18 @@ _.pluck = (array, property) => {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
-_.contains = (array, value) => {
+/*_.contains = (array, value) => {
     var result = false;
     _.each(array, function(element, i, array) {
     element === value ? result = true: result;
     });
     return result;
+};*/
+_.contains = (array, value) => {
+    return _.reduce(array, function(match, item){
+    return match ? true : item === value;
+    }, false)
 };
-
 
 /** _.every()
 * Arguments:
@@ -400,17 +405,18 @@ _.some = (collection, test) => {
 *   _.reduce([1,2,3], function(prev, curr){ return prev + curr}) -> 6
 */
 
-_.reduce = (collection, fn, seed) => {
+_.reduce = function (collection, fn, start) {
     let prev;
-    if(seed !== undefined){
-        prev = seed;
-    _.each(collection, (el, i, collection) => prev = fn(prev, el, i));
+    if (start !== undefined) {
+        prev = start;
+        
+    _.each(collection, (element, i, col) => prev = fn(prev, element, i));
     }
-    else{
+    else {
         prev = collection[0];
-        _.each(collection, (el, i, collection) => {
+        _.each(collection, (element, i, col) => {
             if (i === 0) return;
-            prev = fn(prev, el, i);
+            prev = fn(prev, element, i);
         });
     }
     return prev;
@@ -439,19 +445,14 @@ _.reduce = (collection, fn, seed) => {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = (obj1, obj2, ...rest) => {
-    let args = [obj1, obj2].concat(rest);
-    _.reduce(args, (memo, el, i) => {
-        
-        return _.reduce(el, (memo, el, key) => {
-            memo[key] = el;
-            return memo;
-          }, memo);
-          
-          
-    }, args[0]);
-    
-  return args[0];  
+
+_.extend = function(objectTo){
+    _.each(arguments, function(objectFrom){
+        _.each(objectFrom, function(value, key){
+           objectTo[key] = value; 
+        });      
+    });
+    return objectTo;
 };
 
 // This is the proper way to end a javascript library
